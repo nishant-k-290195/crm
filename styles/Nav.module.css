@@ -1,0 +1,16 @@
+.nav{
+  background-color: purple;
+  padding: 1rem;
+  width: 100vw;
+  list-style-type: none;
+}
+
+.nav ul{
+  display: flex;
+  column-gap: 2rem;
+}
+
+.nav ul li{
+  list-style: none;
+  color: white;
+}
