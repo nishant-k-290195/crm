@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 const LeadsList = (props) => {
 
-  console.log(props.lead)
+  // console.log(props.lead)
 
   return (
     <div>
