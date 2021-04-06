@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { GlobalContext } from '../components/context/GlobalState'
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 
@@ -31,6 +33,9 @@ const MySelect  =  ({ label, ...props })  => {
 import React from 'react'
 
 const CreateLeads  =  (props)  => {
+
+  const {addLead} = useContext(GlobalContext)
+
   return (
     <div>
       <Formik
@@ -89,10 +94,8 @@ const CreateLeads  =  (props)  => {
             .required('Required'),
         })}
 
-        onSubmit = {(values, { setSubmitting }) => {
-          // const newValues = JSON.stringify(values, null, 2);
-          // console.log(values)
-          props.leadData(values)
+        onSubmit = {(lead, { setSubmitting }) => {
+          addLead(lead)
         }}
       >
         <Form>
