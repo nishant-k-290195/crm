@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import {GlobalContext} from '../components/context/GlobalState'
+import {GlobalContext} from '../contexts//GlobalState'
 
 const LeadsList = (props) => {
 
@@ -8,11 +8,10 @@ const LeadsList = (props) => {
 
   return (
     <div>
-      <h1>Leads List</h1>
         {leads.map(lead => {
           return(
             <ul>
-              <li key={lead.id}>Lead ID {lead.id}</li>
+              <li key={lead.id}>Lead ID {lead.leadId}</li>
               <li>First Name {lead.fName}</li>
               <li>Last Name {lead.lName}</li>
               <li>Company {lead.cName}</li>

@@ -1,4 +1,4 @@
-export default (state, action) => {
+const handle = (state, action) => {
   switch(action.type) {
     case 'ADD_LEAD':
       return ({
@@ -10,7 +10,13 @@ export default (state, action) => {
         ...state,
         leads: state.leads.filter((leads => leads.id !== action.payload))
       })
+    case 'COUNT_INCREMENT':
+      return ({
+        count: state.id + 1
+      })
     default: 
       return state
   }
 }
+
+export default handle

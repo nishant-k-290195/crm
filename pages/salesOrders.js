@@ -1,7 +1,8 @@
+import SalesOrderPdf from '../components/SalesOrderPdf'
 const salesOrders = () => {
   return (
     <div>
-      <h1>This is salesOrders.js</h1>
+      <SalesOrderPdf />
     </div>
   )
 }

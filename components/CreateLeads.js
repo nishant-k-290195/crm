@@ -1,8 +1,7 @@
 import { useContext } from 'react'
-import { GlobalContext } from '../components/context/GlobalState'
+import { GlobalContext } from '../contexts/GlobalState'
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-
 
 const MyTextInput  =  ({ label, ...props })  => {
   const [field, meta]  =  useField(props);
@@ -30,10 +29,7 @@ const MySelect  =  ({ label, ...props })  => {
   );
 };
 
-import React from 'react'
-
-const CreateLeads  =  (props)  => {
-
+const CreateLeads = (props)  => {
   const {addLead} = useContext(GlobalContext)
 
   return (
@@ -41,6 +37,8 @@ const CreateLeads  =  (props)  => {
       <Formik
         initialValues = {    
         {
+          select: <button>select</button>,
+          id: 1,
           fName : "",
           lName : "",
           cName : "",
@@ -96,6 +94,7 @@ const CreateLeads  =  (props)  => {
 
         onSubmit = {(lead, { setSubmitting }) => {
           addLead(lead)
+          incrementCount(lead.id)
         }}
       >
         <Form>

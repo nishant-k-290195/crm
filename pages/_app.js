@@ -1,15 +1,19 @@
 import '../styles/globals.css'
 import Layout from '../components/Layout'
-import {GlobalProvider} from '../components/context/GlobalState'
+import {GlobalProvider} from '../contexts/GlobalState'
+import Nav from '../components/Nav'
 
 function MyApp({ Component, pageProps }) {
 
   return (
-    <Layout>
-      <GlobalProvider>
-        <Component {...pageProps} />
-      </GlobalProvider>
-    </Layout>
+    <>
+      <Nav />
+      <Layout>
+        <GlobalProvider>
+          <Component {...pageProps} />
+        </GlobalProvider>
+      </Layout>
+    </>
     
   )
 }
