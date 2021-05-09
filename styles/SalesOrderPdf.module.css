@@ -21,6 +21,8 @@
 }
 
 .quote{
+  height: 1056px;
+  width: 816px;
   display: grid;
   padding: 2rem;
   margin: 0;
@@ -28,7 +30,6 @@
   row-gap: 1rem;
   justify-content: center;
   align-items: top;
-  width: 575px;
   grid-template-columns: 1fr;
   grid-template-areas: 
               "section1"
@@ -97,6 +98,7 @@
   font-weight: 500;
   padding: 4px;
 }
+
 .section4 p{
   width: 100%;
   border: 1px solid white;
@@ -134,6 +136,7 @@
   color: white;
   padding: 4px;
 }
+
 .section5 div p{
   width: 100%;
   background-color: #F3F3F3;
@@ -142,6 +145,7 @@
   font-weight: 3s00;
   padding: 4px;
 }
+
 .section6{
   grid-area: section6;
   display: grid;
@@ -155,11 +159,13 @@
   font-size: medium;
   font-weight: 600;
 }
+
 .section6 p{
   font-size: medium;
   font-weight: 300;
   padding: 0 .5rem;
 }
+
 .section7{
   grid-area: section8;
 }
@@ -185,11 +191,11 @@
   font-size: small;
   font-weight: 500;
 }
+
 .section8 ul li{
   font-size: small;
   font-weight: 300;
 }
-
 
 .section9{
   grid-area: section9;

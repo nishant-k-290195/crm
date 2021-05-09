@@ -1,9 +1,16 @@
 import SalesOrderPdf from '../components/SalesOrderPdf'
+
+const handleClick = () => {
+
+}
+
 const salesOrders = () => {
+
   return (
-    <div>
+    <>
       <SalesOrderPdf />
-    </div>
+      <button onClick={handleClick}>Generate Sales Order</button>
+    </>
   )
 }
 

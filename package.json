@@ -8,13 +8,26 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^2.0.12",
+    "axios": "^0.21.1",
     "formik": "^2.2.6",
+    "fs-extra": "^1.0.0",
+    "html-pdf": "^3.0.1",
+    "html2canvas": "^1.0.0-rc.7",
+    "jspdf": "^1.5.3",
     "next": "10.1.1",
     "next-seo": "^4.23.0",
+    "pdf-lib": "^1.16.0",
+    "pdfkit": "^0.12.1",
+    "puppeteer": "^9.1.1",
     "react": "17.0.2",
     "react-calendar": "^3.4.0",
     "react-datepicker": "^3.8.0",
-    "react-dom": "17.0.2",
+    "react-dom": "^17.0.2",
+    "react-to-pdf": "^0.0.13",
     "yup": "^0.32.9"
+  },
+  "browser": {
+    "html-pdf": false
   }
 }
