@@ -1,0 +1,52 @@
+.input{
+  width: 100%;
+}
+.label{
+  /* color: white; */
+}
+
+.textInput{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.textArea{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+.textArea .textarea{
+  height: 8rem;
+}
+
+.select{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.multSelect{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.maskedInput{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.dateInput{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}

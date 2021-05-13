@@ -1,8 +1,8 @@
+import ItemsList from '../components/ItemsList'
+
 const vendorsList = () => {
   return (
-    <div>
-      <h1>This is vendorsList.js</h1>
-    </div>
+    <ItemsList />
   )
 }
 

@@ -1,23 +1,19 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs-extra')
+import salesOrderHtml from './salesOrderHtml'
+const puppeteer = require('puppeteer')
 
-const createSaleOrderPdf = async () => {
+const createSalesOrderPdf = async () => {
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage()
       const options = {
-        path:'./salesOrder.pdf',
+        path:'./public/temp/salesOrder.pdf',
         format: 'A4',
         printBackground: true,
       }
 
       await page.goto('http://localhost:3000/salesOrders', {waitUntil: 'networkidle2'})
-      await page.setContent(<h1>This is Quote</h1>)
-      // await page.emulateMedia('screen')
+      await page.setContent(salesOrderHtml)
       await page.pdf(options)
-
-      console.log(`pdf generated`)
-  
       await browser.close()
 
     }catch(e){
@@ -25,8 +21,8 @@ const createSaleOrderPdf = async () => {
     }
 }
 
-export default (req, res) => {
-  createSaleOrderPdf()
-  res.status(200).json({ name: 'All good!' })
+export default async (req, res) => {
+  await createSalesOrderPdf()
+  res.status(200).json({ name: 'done' })
 }
 

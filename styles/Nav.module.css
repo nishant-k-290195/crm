@@ -1,15 +1,16 @@
 .section{
-  width: 100%;
   padding: 0;
   margin: 0;
-  background-color: rgba(3, 94, 97, 0.904);
-  border-bottom: 2px solid white;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.842);
+  /* background-color: rgba(3, 94, 97, 0.904); */
+  border-bottom: 2px solid rgba(255, 0, 255, 0.479);
 }
 
 .container{
-  width: 100%;
+  max-width: 1200px;
   padding: 0 2rem;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .nav{
@@ -32,6 +33,8 @@
 
 .ul li{
   color: rgba(255, 255, 255, 0.815);
+  font-size: medium;
+  font-weight: 200;
 }
 
 .ul li a:hover{

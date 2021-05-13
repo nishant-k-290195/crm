@@ -22,7 +22,7 @@ const Nav = () => {
               <Link href='#'>Vendor Center</Link>
               <ul>
                 <li><Link href='/vendorsList'>Vendors List</Link></li>
-                <li><Link href='/workOrders'>Work Orders</Link></li>
+                <li><Link href='/jobOrders'>job Orders</Link></li>
               </ul>
             </li>
           </ul>
