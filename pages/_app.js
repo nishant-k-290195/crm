@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Layout from '../components/Layout'
 import {GlobalProvider} from '../contexts/GlobalState'
+import {ItemsContextProvider} from '../contexts/ItemsListArrayContext'
 import Nav from '../components/Nav'
 
 function MyApp({ Component, pageProps }) {
@@ -10,7 +11,9 @@ function MyApp({ Component, pageProps }) {
       <Nav />
       <Layout>
         <GlobalProvider>
-          <Component {...pageProps} />
+          <ItemsContextProvider>
+            <Component {...pageProps} />
+          </ItemsContextProvider>
         </GlobalProvider>
       </Layout>
     </>

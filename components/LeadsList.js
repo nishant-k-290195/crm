@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import {GlobalContext} from '../contexts//GlobalState'
+import {GlobalContext} from '../contexts/GlobalState'
 
 const LeadsList = (props) => {
 

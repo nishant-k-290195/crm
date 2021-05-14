@@ -1,4 +1,4 @@
-import {createContext,useReducer} from 'react'
+import {createContext, useReducer} from 'react'
 import Reducer from './Reducer';
 
 const initialState = {
@@ -38,7 +38,6 @@ export const GlobalProvider = ({children}) => {
       payload: lead
     })
   }
-
 
   const deleteLead = (id) => {
     dispatch({

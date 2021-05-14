@@ -5,10 +5,12 @@ import MyTextInput from  '../FormControls/MyTextInput'
 import MyMaskedTextInput from  '../FormControls/MyMaskedTextInput'
 import MyDateInput from  '../FormControls/MyDateInput'
 import MyTextArea from  '../FormControls/MyTextArea'
-import {useState} from 'react'
+import {useState, useContext} from 'react'
+import {ItemsContext} from '../contexts/ItemsListArrayContext'
 import ItemsList from '../components/ItemsList'
+import CurrentDate  from '../components/CurrentDate'
 
-const handleClick = async () => {
+const handlePrintQuote = async () => {
   try{
     const res = await axios.post('/api/generateQuotePdf')
     if(res.status === 200){
@@ -20,17 +22,19 @@ const handleClick = async () => {
   }
 }
 
-const addItem = (props) => {
 
+const handleClear = () => {
+  
 }
+
 const quotes = () => {
+  const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
   const [count, setCount] = useState(1426)
   return (
     <>
       <Formik
         initialValues={{
-          quoteNumber: count,
-          quoteDate:'',
+          quoteNumber: '',
           fullName: '',
           cName: '',
           streetAddress:'',
@@ -39,23 +43,18 @@ const quotes = () => {
           zip: '',
           deliveryDate:'',
           pickupDate: '',
-          items:{
-            item:'',
-            desc:'',
-            qty:'',
-            rate:'',
-            amount: '',
-          },
           instructions: '',
           note:'',
         }}
 
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={ async (values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
+            alert(JSON.stringify(values, null, 2))
+            setSubmitting(false)
             setCount(count+1)
-          }, 400);
+            console.log(itemRowArray)
+          }, 400)
+          
         }}
       >
         <Form>
@@ -79,8 +78,15 @@ const quotes = () => {
                 </div>
 
                 <div className={quoteStyles.right}>
-                  <h4>Quote Number # {`19545`} </h4>
-                  <h4>{`May 12, 2021`}</h4>
+                  <MyTextInput
+                    label="Quote Number # "
+                    name="quoteNumber"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <CurrentDate 
+                    name="date"
+                  />
                 </div>
               </div>
               <div className={quoteStyles.section2}>
@@ -142,17 +148,17 @@ const quotes = () => {
               <div className={quoteStyles.section6}>
                 <MyTextArea
                   label="Note"
-                  name = "note"
-                  type = "text"
+                  name="note"
+                  type="text"
                   className={quoteStyles.section6TextArea}
                 />
               </div>
               <div className={quoteStyles.section7}>
                 <button type="submit">Save</button>
                 <button>Email</button>
-                <button onClick={handleClick} type="button">Preview Quote</button>
+                <button onClick={handlePrintQuote} type="button">Preview Quote</button>
                 <button>Create Sales Order</button>
-                <button>Clear</button>
+                <button type="reset">Clear</button>
               </div>
             </div>
           </div>

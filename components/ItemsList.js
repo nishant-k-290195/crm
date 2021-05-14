@@ -2,18 +2,18 @@ import MyTextInput from  '../FormControls/MyTextInput'
 import MySelect from  '../FormControls/MySelect'
 import quoteStyles from '../styles/Quote.module.css'
 import itemRowStyles from '../styles/ItemRow.module.css'
-import {useState} from 'react'
+import {ItemsContext} from '../contexts/ItemsListArrayContext'
+import {useContext, useState} from 'react'
 
 const ItemsList = () => {
+  const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
   const [values, setValues] = useState({
-      item:'',
-      desc:'',
-      qty:'',
-      rate:'',
-      amount: '',
-    })
-
-  const [itemRowArray, setItemRowArray] = useState([])
+    item:'',
+    desc:'',
+    qty:'',
+    rate:'',
+    amount: '',
+  })
 
   const handleChange = (event) => {
     setValues(prevValues => ({ ...prevValues, [event.target.name]: event.target.value }))
@@ -21,15 +21,23 @@ const ItemsList = () => {
 
   const addItemRow = (newItemRow) => {
     setItemRowArray(prevValues => ([...prevValues, newItemRow]))
-    // alert(JSON.stringify(itemRow, null, 2))
   }
-  const handleSubmit = (event) => {
+
+  const handleAdd = (event) => {
     event.preventDefault()
-    // setItemValues(prevValues => ( [...prevValues, newItem]))
-    // alert(JSON.stringify(values, null, 2))
     addItemRow(values)
   }
 
+  const removeItemRow = (id) => {
+    setItemRowArray(prevValues => {
+      return prevValues.filter((itemRowArray, index) => {
+        return (
+          index !== id
+        )
+      }
+    )})
+  }
+  
   return (
     <div>
       <div className={quoteStyles.section5Items}>
@@ -91,20 +99,23 @@ const ItemsList = () => {
         </div>
         <div>
           <h4>ADD</h4>
-          <button onClick={handleSubmit} type="submit">Add</button>
+          <button onClick={handleAdd} type="submit">Add</button>
         </div>
       </div>
     {/* <div className={itemRowStyles.itemRowArray}> */}
     {
-      itemRowArray.map((itemRow) => {
+      itemRowArray.map((itemRow, index) => {
         return(
-          <div key={1} className={itemRowStyles.itemRow}>
+          <div key={index} id={index} className={itemRowStyles.itemRow}>
             <div><h4>{itemRow.item}</h4></div>
             <div><h4>{itemRow.desc}</h4></div>
             <div><h4>{itemRow.qty}</h4></div>
             <div><h4>{itemRow.rate}</h4></div>
             <div><h4>{itemRow.amount}</h4></div>
-            <div><button>Remove</button></div>
+            <div><button onClick={(event) => {
+              event.preventDefault()
+              removeItemRow(index)
+            }}>Remove</button></div>
           </div>
         )
       })
