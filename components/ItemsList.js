@@ -105,13 +105,14 @@ const ItemsList = () => {
     {/* <div className={itemRowStyles.itemRowArray}> */}
     {
       itemRowArray.map((itemRow, index) => {
+        const {item, desc, qty, rate, amount} = itemRow
         return(
           <div key={index} id={index} className={itemRowStyles.itemRow}>
-            <div><h4>{itemRow.item}</h4></div>
-            <div><h4>{itemRow.desc}</h4></div>
-            <div><h4>{itemRow.qty}</h4></div>
-            <div><h4>{itemRow.rate}</h4></div>
-            <div><h4>{itemRow.amount}</h4></div>
+            <div><h4>{item}</h4></div>
+            <div><h4>{desc}</h4></div>
+            <div><h4>{qty}</h4></div>
+            <div><h4>{rate}</h4></div>
+            <div><h4>{amount}</h4></div>
             <div><button onClick={(event) => {
               event.preventDefault()
               removeItemRow(index)

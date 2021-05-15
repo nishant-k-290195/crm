@@ -23,6 +23,6 @@ const createJobOrderPdf = async () => {
 
 export default async (req, res) => {
   await createJobOrderPdf()
-  res.status(200).json({ name: 'done' })
+  res.status(200).json({ status: 'success' })
 }
 

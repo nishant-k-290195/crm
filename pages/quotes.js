@@ -5,10 +5,12 @@ import MyTextInput from  '../FormControls/MyTextInput'
 import MyMaskedTextInput from  '../FormControls/MyMaskedTextInput'
 import MyDateInput from  '../FormControls/MyDateInput'
 import MyTextArea from  '../FormControls/MyTextArea'
-import {useState, useContext} from 'react'
+import {useContext} from 'react'
 import {ItemsContext} from '../contexts/ItemsListArrayContext'
 import ItemsList from '../components/ItemsList'
-import CurrentDate  from '../components/CurrentDate'
+import CurrentDate, {currentLongDate} from '../components/CurrentDate'
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const handlePrintQuote = async () => {
   try{
@@ -22,14 +24,8 @@ const handlePrintQuote = async () => {
   }
 }
 
-
-const handleClear = () => {
-  
-}
-
 const quotes = () => {
   const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
-  const [count, setCount] = useState(1426)
   return (
     <>
       <Formik
@@ -48,16 +44,21 @@ const quotes = () => {
         }}
 
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-            setCount(count+1)
-            console.log(itemRowArray)
-          }, 400)
-          
+          try{
+            await sleep(500);
+            // alert(JSON.stringify(values, null, 2))
+            const res = await axios.post('/api/quote', { values, itemRowArray, currentLongDate })
+            if(res.status === 200){
+              // alert("Saved")
+            }
+          }catch(err){
+            alert(err)
+          }
         }}
       >
-        <Form>
+      {
+        ({isSubmitting}) => (
+          <Form>
           <div className={quoteStyles.section}>
             <div className={quoteStyles.container}>
               <div className={quoteStyles.section1}>
@@ -163,6 +164,8 @@ const quotes = () => {
             </div>
           </div>
         </Form>
+        )
+      }
       </Formik>
     </>
   )

@@ -38,14 +38,22 @@ const quoteCss =
     display: grid;
     align-items: center;
     justify-content: space-between;
-    grid-template-columns: repeat(2, max-content)
+    grid-template-columns: repeat(2, max-content);
   }
-
   .section-1 img{
     height: 8rem;
     width: 8rem
   }
+  
 
+  .section-1-right{
+    display: grid;
+    row-gap: 1rem;
+  }
+  .section-1-right h1{
+    font-size: x-large;
+    font-weight: 900;
+  }
   .section-2{
     display: grid;
     justify-content: space-between;
@@ -61,6 +69,7 @@ const quoteCss =
   .section-2-right{
     display: grid;
     row-gap: 1rem;
+    align-items: bottom;
   }
 
   .section-3 {

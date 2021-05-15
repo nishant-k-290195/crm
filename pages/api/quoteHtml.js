@@ -1,5 +1,31 @@
 import quoteCss from './quoteCss'
 
+const { itemRowArray, values, currentLongDate } = global.quoteData
+const {day, month, date, year} = currentLongDate
+const itemRows = itemRowArray.map((element, {index} )=> {
+  const {item, desc, qty, rate, amount} = element
+  return (
+    
+    `<ul key=${index} id=${index} class='items-list'>
+      <li>
+        <p>${item}</p>
+      </li>
+      <li>
+        <p>${desc}</p>
+      </li>
+      <li>
+        <p>${qty}</p>
+      </li>
+      <li>
+        <p>${rate}</p>
+      </li>
+      <li>
+        <p>${amount}</p>
+      </li>
+    </ul>`
+  )
+}).join('')
+
 const quoteHtml = `
   <html>
     <head>
@@ -10,28 +36,37 @@ const quoteHtml = `
     <body>
       <div class="section-1">
         <img src="roundlogo.png" />
-        <h1>${`Quote # 424546`}</h1>
+        <div class="section-1-right">
+          <h1>Quote # ${values.quoteNumber}</h1>
+          <h3>${day} ${month} ${date}, ${year}</h3>
+        </div>
       </div>
+      <hr/>
       <div class="section-2">
         <div class='section-2-left'>
           <div>
             <h3>Customer Name</h3>
-            <p>${`Daniel Martinez`}</p>
+            <p>${values.fullName}</p>
+          </div>
+          <div>
+            <h3>Company Name</h3>
+            <p>${values.cName}</p>
           </div>
           <div>
             <h3>Delivery Address</h3>
-            <p>${`fds street dover DeDover, Ca 12345`}</p>
+            <p>${values.streetAddress}</p>
+            <p>${values.city} ${values.state} ${values.zip}</p>
           </div>
         </div>
 
         <div class='section-2-right'>
           <div>
             <h3>Delivery Date</h3>
-            <p>${`April 05, 2016`}</p>
+            <p>${values.deliveryDate}</p>
           </div>
           <div>
             <h3>Pickup Date</h3>
-            <p>${`April 05, 2016`}</p>
+            <p>${values.pickupDate}</p>
           </div>
         </div>
       </div>
@@ -54,27 +89,12 @@ const quoteHtml = `
             <h3>TOTAL</h3>
           </li>
         </ul>
-        <ul class='items-list'>
-          <li>
-            <p>${`Standard Portable Restroom`}</p>
-          </li>
-          <li>
-            <p>${`Standard Portable Restroom-Regular event unit`}</p>
-          </li>
-          <li>
-            <p>${`1`}</p>
-          </li>
-          <li>
-            <p>$ ${`195`}</p>
-          </li>
-          <li>
-            <p>$ ${`195`}</p>
-          </li>
-        </ul>
+          ${itemRows}
         <div>
           <h4>Total Amount</h4><p>$ ${`195`}</p>
         </div>
       </div>
+      <hr/>
       <div class='section-4'>
         <div>
           <h3>Long Term Use</h3>

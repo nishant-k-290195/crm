@@ -7,10 +7,13 @@ const yy = d.getFullYear()
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+export const currentLongDate = { day: days[day], month: months[mm], date: dd, year: yy }
+
 const CurrentDate = () => {
   return (
     <h4>{days[day]} {months[mm]} {dd}, {yy}</h4>
   )
 }
+
 
 export default CurrentDate
