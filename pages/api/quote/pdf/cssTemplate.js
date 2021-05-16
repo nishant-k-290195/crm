@@ -45,11 +45,11 @@ const cssTemplate =
     width: 8rem
   }
   
-
   .section-1-right{
     display: grid;
     row-gap: 1rem;
   }
+
   .section-1-right h1{
     font-size: x-large;
     font-weight: 900;
@@ -57,18 +57,21 @@ const cssTemplate =
   .section-2{
     display: grid;
     justify-content: space-between;
-    align-items: bottom;
+    align-items: start;
     grid-template-columns: repeat(2, max-content);
   }
 
   .section-2-left{
     display: grid;
     row-gap: 1rem;
+    align-items: start;
   }
 
   .section-2-right{
     display: grid;
     row-gap: 1rem;
+    align-items: start;
+    grid-template-rows: repeat(2, min-content);
   }
 
   .section-3 {

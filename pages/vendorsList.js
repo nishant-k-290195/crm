@@ -2,7 +2,7 @@ import ItemsList from '../components/ItemsList'
 
 const vendorsList = () => {
   return (
-    <ItemsList />
+    <h1>This is vendors List</h1>
   )
 }
 

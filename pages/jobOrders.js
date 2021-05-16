@@ -31,14 +31,21 @@ const jobOrder = () => {
       <Formik
         initialValues={{
           jobOrderNumber: '',
-          fullName: '',
-          cName: '',
+          vendorLogo: '',
+          repName: '',
+          vendor: '',
+          vendorAddress: '',
+          vendorEmail: '',
+          vendorPhone: '',
+          vendorFax: '',
           streetAddress:'',
           city: '',
           state:'',
           zip: '',
           deliveryDate:'',
           pickupDate: '',
+          onsitePerson: '',
+          onsitePhone: '',
           instructions: '',
           note:'',
         }}
@@ -63,16 +70,46 @@ const jobOrder = () => {
             <div className={jobOrderStyles.container}>
               <div className={jobOrderStyles.section1}>
                 <div className={jobOrderStyles.left}>
-                  <h5>Customer Personal Details</h5>
+                  <h5>Vendor Details</h5>
                   <MyTextInput
-                    label="Name"
-                    name="fullName"
+                    label="Vendor Logo"
+                    name="vendorLogo"
+                    type="file"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Representative Name"
+                    name="repName"
                     type="text"
                     autoComplete="off"
                   />
                   <MyTextInput
-                    label="Company"
-                    name="cName"
+                    label="Vendor Name"
+                    name="vendor"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Vendor Address"
+                    name="vendorAddress"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Vendor Email"
+                    name="vendorEmail"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Vendor Phone"
+                    name="vendorPhone"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Vendor Fax"
+                    name="vendorFax"
                     type="text"
                     autoComplete="off"
                   />
@@ -80,7 +117,7 @@ const jobOrder = () => {
 
                 <div className={jobOrderStyles.right}>
                   <MyTextInput
-                    label="jobOrder Number # "
+                    label="Job Order # "
                     name="jobOrderNumber"
                     type="text"
                     autoComplete="off"
@@ -134,6 +171,18 @@ const jobOrder = () => {
                     label="Pickup Date"
                     autoComplete="off"
                   />
+                  <MyTextInput
+                    label="Onsite Person"
+                    name="onsitePerson"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Onsite Phone"
+                    name="onsitePhone"
+                    type="text"
+                    autoComplete="off"
+                  />
                   <MyTextArea
                     label="Customer Instructions"
                     name="instructions"
@@ -156,9 +205,8 @@ const jobOrder = () => {
               </div>
               <div className={jobOrderStyles.section7}>
                 <button type="submit">Save</button>
+                <button onClick={handlePrintjobOrder} type="button">Preview Job Order</button>
                 <button>Email</button>
-                <button onClick={handlePrintjobOrder} type="button">Preview jobOrder</button>
-                <button>Create Sales Order</button>
                 <button type="reset">Clear</button>
               </div>
             </div>

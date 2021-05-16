@@ -10,9 +10,13 @@ const longDeliveryDate = `${days[deliveryDate.getDay()]} ${months[deliveryDate.g
 const pickupDate = new Date(`${values.pickupDate}`)
 const longPickupDate = `${days[pickupDate.getDay()]} ${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
 
+const totalAmount = itemRowArray.reduce((accumulator, currentValue) => {
+  return accumulator + (currentValue.qty * currentValue.rate)
+}, 0)
+
 const itemRows = itemRowArray.map((element, {index} )=> {
-  console.log(element)
-  const {item, desc, qty, rate, amount} = element
+  const {item, desc, qty, rate} = element
+  const total = qty*rate
   return (
     
     `<ul key=${index} id=${index} class='items-list'>
@@ -26,10 +30,10 @@ const itemRows = itemRowArray.map((element, {index} )=> {
         <p>${qty}</p>
       </li>
       <li>
-        <p>${rate}</p>
+        <p>$${rate}</p>
       </li>
       <li>
-        <p>${amount}</p>
+        <p>$${total}</p>
       </li>
     </ul>`
   )
@@ -92,7 +96,7 @@ const htmlTemplate = `
             <h3>QTY</h3>
           </li>
           <li>
-            <h3>PRICE</h3>
+            <h3>RATE</h3>
           </li>
           <li>
             <h3>TOTAL</h3>
@@ -100,7 +104,7 @@ const htmlTemplate = `
         </ul>
           ${itemRows}
         <div>
-          <h4>Total Amount</h4><p>$ ${itemRowArray.totalAmount}</p>
+          <h4>Total Amount $${totalAmount}</h4>
         </div>
       </div>
       <hr/>

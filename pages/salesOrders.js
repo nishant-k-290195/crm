@@ -39,6 +39,8 @@ const salesOrders = () => {
           zip: '',
           deliveryDate:'',
           pickupDate: '',
+          onsitePerson: '',
+          onsitePhone: '',
           instructions: '',
           note:'',
         }}
@@ -80,7 +82,7 @@ const salesOrders = () => {
 
                 <div className={quoteStyles.right}>
                   <MyTextInput
-                    label="Quote Number # "
+                    label="Sales Order # "
                     name="quoteNumber"
                     type="text"
                     autoComplete="off"
@@ -134,8 +136,20 @@ const salesOrders = () => {
                     label="Pickup Date"
                     autoComplete="off"
                   />
+                  <MyTextInput
+                    label="Onsite Person"
+                    name="onsitePerson"
+                    type="text"
+                    autoComplete="off"
+                  />
+                  <MyTextInput
+                    label="Onsite Phone"
+                    name="onsitePhone"
+                    type="text"
+                    autoComplete="off"
+                  />
                   <MyTextArea
-                    label="Customer Instructions"
+                    label="Instructions"
                     name="instructions"
                     type="text"
                     autoComplete="off"
@@ -157,8 +171,8 @@ const salesOrders = () => {
               <div className={quoteStyles.section7}>
                 <button type="submit">Save</button>
                 <button>Email</button>
-                <button onClick={handlePrintQuote} type="button">Preview Quote</button>
-                <button>Create Sales Order</button>
+                <button onClick={handlePrintQuote} type="button">Preview Sales Order</button>
+                <button>Create Job Order</button>
                 <button type="reset">Clear</button>
               </div>
             </div>

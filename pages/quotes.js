@@ -134,12 +134,12 @@ const quotes = () => {
                     label="Pickup Date"
                     autoComplete="off"
                   />
-                  <MyTextArea
+                  {/* <MyTextArea
                     label="Customer Instructions"
                     name="instructions"
                     type="text"
                     autoComplete="off"
-                  />
+                  /> */}
                 </div>
               </div>
               <div className={quoteStyles.section5}>

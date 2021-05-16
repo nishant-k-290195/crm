@@ -10,8 +10,12 @@ const longDeliveryDate = `${days[deliveryDate.getDay()]} ${months[deliveryDate.g
 const pickupDate = new Date(`${values.pickupDate}`)
 const longPickupDate = `${days[pickupDate.getDay()]} ${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
 
+const totalAmount = itemRowArray.reduce((accumulator, currentValue) => {
+  return accumulator + (currentValue.qty * currentValue.rate)
+}, 0)
+
 const itemRows = itemRowArray.map((element, {index} )=> {
-  const {item, desc, qty, rate, amount} = element
+  const {item, desc, qty, rate} = element
   const total = qty*rate
   return (
     
@@ -26,10 +30,10 @@ const itemRows = itemRowArray.map((element, {index} )=> {
         <p>${qty}</p>
       </li>
       <li>
-        <p>${rate}</p>
+        <p>$${rate}</p>
       </li>
       <li>
-        <p>${total}</p>
+        <p>$${total}</p>
       </li>
     </ul>`
   )
@@ -68,7 +72,7 @@ const htmlTemplate = `
           </div>
           <div>
             <h3>Onsite Details</h3>
-            <p>${`Call an hour before delivery.`}</p>
+            <p>${values.onsitePerson} | ${values.onsitePhone}</p>
           </div>
 
         </div>
@@ -84,7 +88,7 @@ const htmlTemplate = `
           </div>
           <div>
             <h3>Instructions</h3>
-            <p>${`Place in the backyard`}</p>
+            <p>${values.instructions}</p>
           </div>
         </div>
       </div>
@@ -101,7 +105,7 @@ const htmlTemplate = `
             <h3>QTY</h3>
           </li>
           <li>
-            <h3>PRICE</h3>
+            <h3>RATE</h3>
           </li>
           <li>
             <h3>TOTAL</h3>
@@ -109,7 +113,7 @@ const htmlTemplate = `
         </ul>
           ${itemRows}
         <div>
-          <h4>Total Amount</h4><p>$ ${`195`}</p>
+          <h4>Total Amount $${totalAmount}</h4>
         </div>
       </div>
       <hr/>
@@ -117,7 +121,7 @@ const htmlTemplate = `
       <div>
         <h3>Long Term Use</h3>
         <ul>
-          <li>Billing Cycle Period is 28 Days.</li>
+          <li>Billing cycle period is 28 Days.</li>
           <li>Includes weekly once cleaning service.</li>
           <li>If the service is extended after the end of the first billing cycle period then same amount will be charged for the next month.</li>
         </ul>

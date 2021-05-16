@@ -28,6 +28,7 @@ const ItemsList = () => {
   const handleAdd = (event) => {
     event.preventDefault()
     addItemRow(values)
+    console.log(values)
   }
 
   const removeItemRow = (id) => {
@@ -133,7 +134,6 @@ const ItemsList = () => {
             name="totalAmount"
             type="text"
             className={quoteStyles.totalAmount}
-            onChange={handleChange}
             value={totalAmount} 
             readOnly
           />
