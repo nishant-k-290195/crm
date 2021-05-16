@@ -4,6 +4,7 @@ import quoteStyles from '../styles/Quote.module.css'
 import itemRowStyles from '../styles/ItemRow.module.css'
 import {ItemsContext} from '../contexts/ItemsListArrayContext'
 import {useContext, useState} from 'react'
+import {FaDollarSign} from 'react-icons/fa';
 
 const ItemsList = () => {
   const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
@@ -13,6 +14,7 @@ const ItemsList = () => {
     qty:'',
     rate:'',
     amount: '',
+    totalAmount: ''
   })
 
   const handleChange = (event) => {
@@ -37,7 +39,11 @@ const ItemsList = () => {
       }
     )})
   }
-  
+
+  const totalAmount = itemRowArray.reduce((accumulator, currentValue) => {
+     return accumulator + (currentValue.qty * currentValue.rate)
+  }, 0)
+
   return (
     <div>
       <div className={quoteStyles.section5Items}>
@@ -94,7 +100,8 @@ const ItemsList = () => {
             name = "amount"
             type = "text"
             className = {quoteStyles.amount}
-            onChange={handleChange}
+            value={values.qty*values.rate}
+            readOnly
           />
         </div>
         <div>
@@ -102,7 +109,6 @@ const ItemsList = () => {
           <button onClick={handleAdd} type="submit">Add</button>
         </div>
       </div>
-    {/* <div className={itemRowStyles.itemRowArray}> */}
     {
       itemRowArray.map((itemRow, index) => {
         const {item, desc, qty, rate, amount} = itemRow
@@ -121,7 +127,17 @@ const ItemsList = () => {
         )
       })
     }
-    {/* </div> */}
+      <div className={quoteStyles.total}>
+        <h4>Total Amount:</h4>
+        <MyTextInput
+            name="totalAmount"
+            type="text"
+            className={quoteStyles.totalAmount}
+            onChange={handleChange}
+            value={totalAmount} 
+            readOnly
+          />
+      </div>
     </div>
   )
 }

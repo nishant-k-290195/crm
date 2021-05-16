@@ -1,4 +1,4 @@
-const quoteCss =
+const cssTemplate =
 `html,
   body {
     padding: 1rem;
@@ -36,46 +36,39 @@ const quoteCss =
   .section-1{
     padding-bottom: 2.5rem;
     display: grid;
-    align-items: top;
+    align-items: center;
     justify-content: space-between;
     grid-template-columns: repeat(2, max-content);
   }
-
-  .section-1 div{
-    display: grid;
-    align-items: top;
-  }
-
-  .section-1 div h1{
-    padding-top: 1rem;
-  }
-
   .section-1 img{
-    height: 4.5rem;
-    width: auto;
+    height: 8rem;
+    width: 8rem
   }
+  
 
+  .section-1-right{
+    display: grid;
+    row-gap: 1rem;
+  }
+  .section-1-right h1{
+    font-size: x-large;
+    font-weight: 900;
+  }
   .section-2{
     display: grid;
     justify-content: space-between;
-    align-items: center;
-    grid-template-columns: 1.5fr 1fr;
-  }
-
-  .section-2-left h4{
-    font-weight: 400;
+    align-items: bottom;
+    grid-template-columns: repeat(2, max-content);
   }
 
   .section-2-left{
     display: grid;
     row-gap: 1rem;
-    justify-self: left;
   }
 
   .section-2-right{
     display: grid;
     row-gap: 1rem;
-    justify-self: right;
   }
 
   .section-3 {
@@ -149,25 +142,38 @@ const quoteCss =
     border: solid 1px white
   }
 
+  .section-4{
+    display: grid;
+    align-items: top;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-4 ul {
+    padding-left: 2rem;
+  }
+
   .section-4 h3{
     font-size: small;
   }
-  
-  .outer li{
+  .section-4 ul li{
     padding: .2rem;
     font-size: smaller;
-    font-weight: 200;
   }
 
-  .inner li{
-    padding: .2rem;
-    font-size: small;
-    font-weight: 200;
-  }
-
-  footer{
-    text-align: center;
+  footer ul{
+    bottom:0;
+    padding: 0;
+    margin-top: 4rem;
+    list-style: none;
+    display: grid;
+    justify-content: space-between;
+    align-items: bottom;
+    grid-template-columns: repeat(3, max-content);
+    color: blue;
+    font-size: smaller;
+    font-weight: 300;
   }
 `
 
-export default quoteCss
+export default cssTemplate

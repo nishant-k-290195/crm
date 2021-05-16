@@ -1,4 +1,4 @@
-const quoteCss =
+const cssTemplate =
 `html,
   body {
     padding: 1rem;
@@ -27,42 +27,70 @@ const quoteCss =
     font-size: medium;
     font-weight: 500;
   }
-
+  h4{
+    font-size: medium;
+    font-weight: 400;
+  }
   p{
     font-size: medium;
     font-weight: 300;
   }
 
   .section-1{
-    padding-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
     display: grid;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
-    grid-template-columns: repeat(2, max-content)
+    grid-template-columns: repeat(2, max-content);
   }
 
-  .section-1 img{
-    height: 8rem;
-    width: 8rem
+  .section-1-left{
+    display: grid;
+    align-items: start;
+    justify-content: left;
+    row-gap: .5rem;
   }
 
+  .section-1-left div{
+    display: grid;
+    align-items: start;
+  }
+
+  .section-1-left div img{
+    height: 2.5rem;
+    width: auto;
+  }
+
+
+  .section-1-right{
+    display: grid;
+    align-items: start;
+    justify-content: right;
+    grid-template-rows: repeat(2, min-content);
+    row-gap: 1rem;
+  }
+
+  .section-1-right h1{
+    font-size: x-large;
+    font-weight: 900;
+  }
   .section-2{
     display: grid;
     justify-content: space-between;
-    align-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    align-items: bottom;
+    grid-template-columns: repeat(2, max-content);
   }
 
   .section-2-left{
     display: grid;
     row-gap: 1rem;
-    justify-self: left;
+    grid-template-rows: repeat(3, min-content);
   }
 
   .section-2-right{
     display: grid;
     row-gap: 1rem;
-    justify-self: right;
+    grid-template-rows: repeat(2, min-content);
   }
 
   .section-3 {
@@ -136,29 +164,20 @@ const quoteCss =
     border: solid 1px white
   }
 
-  .section-4{
-    display: grid;
-    align-items: top;
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section-4 ul {
-    padding-left: 2rem;
-  }
-
   .section-4 h3{
     font-size: small;
   }
-  .section-4 ul li{
+  
+  .outer li{
     padding: .2rem;
-    font-size: smaller;
-  }
-
-  .cancellation p{
-    font-size: smaller;
+    font-size: x-small;
     font-weight: 300;
-    padding: 2rem 0;
+  }
+  
+  .inner li{
+    padding: .2rem;
+    font-size: x-small;
+    font-weight: 300;
   }
 
   footer ul{
@@ -171,9 +190,9 @@ const quoteCss =
     align-items: bottom;
     grid-template-columns: repeat(3, max-content);
     color: blue;
-    font-size: smaller;
+    font-size: xx-small;
     font-weight: 300;
   }
 `
 
-export default quoteCss
+export default cssTemplate

@@ -1,18 +1,18 @@
-import salesOrderHtml from './salesOrderHtml'
+import htmlTemplate from './htmlTemplate'
 const puppeteer = require('puppeteer')
 
-const createSalesOrderPdf = async () => {
+const generatePdf = async () => {
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage()
       const options = {
-        path:'./public/temp/salesOrder.pdf',
+        path:'./public/temp/quote.pdf',
         format: 'A4',
         printBackground: true,
       }
 
-      await page.goto('http://localhost:3000/salesOrders', {waitUntil: 'networkidle2'})
-      await page.setContent(salesOrderHtml)
+      await page.goto('http://localhost:3000/quote', {waitUntil: 'networkidle2'})
+      await page.setContent(htmlTemplate)
       await page.pdf(options)
       await browser.close()
 
@@ -22,7 +22,7 @@ const createSalesOrderPdf = async () => {
 }
 
 export default async (req, res) => {
-  await createSalesOrderPdf()
+  await generatePdf()
   res.status(200).json({ name: 'done' })
 }
 

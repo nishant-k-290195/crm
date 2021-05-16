@@ -1,8 +1,17 @@
-import quoteCss from './quoteCss'
+import cssTemplate from './cssTemplate'
 
 const { itemRowArray, values, currentLongDate } = global.quoteData
 const {day, month, date, year} = currentLongDate
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const deliveryDate = new Date(`${values.deliveryDate}`)
+const longDeliveryDate = `${days[deliveryDate.getDay()]} ${months[deliveryDate.getMonth()]} ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`
+const pickupDate = new Date(`${values.pickupDate}`)
+const longPickupDate = `${days[pickupDate.getDay()]} ${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
+
 const itemRows = itemRowArray.map((element, {index} )=> {
+  console.log(element)
   const {item, desc, qty, rate, amount} = element
   return (
     
@@ -26,16 +35,16 @@ const itemRows = itemRowArray.map((element, {index} )=> {
   )
 }).join('')
 
-const quoteHtml = `
+const htmlTemplate = `
   <html>
     <head>
       <style>
-        ${quoteCss}
+        ${cssTemplate}
       </style>
     </head>
     <body>
       <div class="section-1">
-        <img src="roundlogo.png" />
+        <img src="static/roundlogo.png" />
         <div class="section-1-right">
           <h1>Quote # ${values.quoteNumber}</h1>
           <h3>${day} ${month} ${date}, ${year}</h3>
@@ -62,11 +71,11 @@ const quoteHtml = `
         <div class='section-2-right'>
           <div>
             <h3>Delivery Date</h3>
-            <p>${values.deliveryDate}</p>
+            <p>${longDeliveryDate}</p>
           </div>
           <div>
             <h3>Pickup Date</h3>
-            <p>${values.pickupDate}</p>
+            <p>${longPickupDate}</p>
           </div>
         </div>
       </div>
@@ -91,7 +100,7 @@ const quoteHtml = `
         </ul>
           ${itemRows}
         <div>
-          <h4>Total Amount</h4><p>$ ${`195`}</p>
+          <h4>Total Amount</h4><p>$ ${itemRowArray.totalAmount}</p>
         </div>
       </div>
       <hr/>
@@ -123,4 +132,4 @@ const quoteHtml = `
   </html>
 `
 
-export default quoteHtml
+export default htmlTemplate
