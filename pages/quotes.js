@@ -23,7 +23,17 @@ const handlePrintQuote = async () => {
     alert(err)
   }
 }
+const handleEmail = async () => {
+  try{
+    const res = await axios.post('/api/quote/email/sendEmail')
+    if(res.status === 200){
+      alert(`Quote Sent`)
+    }
 
+  }catch(err){
+    alert(err)
+  }
+}
 const quotes = () => {
   const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
   return (
@@ -156,8 +166,8 @@ const quotes = () => {
               </div>
               <div className={quoteStyles.section7}>
                 <button type="submit">Save</button>
-                <button>Email</button>
                 <button onClick={handlePrintQuote} type="button">Preview Quote</button>
+                <button onClick={handleEmail}>Email</button>
                 <button>Create Sales Order</button>
                 <button type="reset">Clear</button>
               </div>
