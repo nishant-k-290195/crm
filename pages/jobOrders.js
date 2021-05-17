@@ -12,7 +12,7 @@ import CurrentDate, {currentLongDate} from '../components/CurrentDate'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-const handlePrintjobOrder = async () => {
+const handlePrintJobOrder = async () => {
   try{
     const res = await axios.post('/api/jobOrder/pdf/generatePdf')
     if(res.status === 200){
@@ -217,8 +217,8 @@ const jobOrder = () => {
               </div>
               <div className={jobOrderStyles.section7}>
                 <button type="submit">Save</button>
-                <button onClick={handlePrintjobOrder} type="button">Preview Job Order</button>
-                <button onClick={handleEmail}>Email</button>
+                <button onClick={handlePrintJobOrder} type="button">Preview Job Order</button>
+                <button onClick={handleEmail} type="button">Email</button>
                 <button type="reset">Clear</button>
               </div>
             </div>

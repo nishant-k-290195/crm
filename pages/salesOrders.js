@@ -12,7 +12,7 @@ import CurrentDate, {currentLongDate} from '../components/CurrentDate'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-const handlePrintQuote = async () => {
+const handlePrintSalesOrder = async () => {
   try{
     const res = await axios.post('/api/salesOrder/pdf/generatePdf')
     if(res.status === 200){
@@ -189,9 +189,9 @@ const salesOrders = () => {
               </div>
               <div className={quoteStyles.section7}>
                 <button type="submit">Save</button>
-                <button onClick={handlePrintQuote} type="button">Preview Sales Order</button>
-                <button onClick={handleEmail}>Email</button>
-                <button>Create Job Order</button>
+                <button onClick={handlePrintSalesOrder} type="button">Preview Sales Order</button>
+                <button onClick={handleEmail} type="button">Email</button>
+                <button type="button">Create Job Order</button>
                 <button type="reset">Clear</button>
               </div>
             </div>

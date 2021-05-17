@@ -57,10 +57,9 @@ const quotes = () => {
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
           try{
             await sleep(500);
-            // alert(JSON.stringify(values, null, 2))
             const res = await axios.post('/api/quote/quote', { values, itemRowArray, currentLongDate })
             if(res.status === 200){
-              alert("Saved")
+              alert('success')
             }
           }catch(err){
             alert(err)
@@ -168,8 +167,8 @@ const quotes = () => {
               <div className={quoteStyles.section7}>
                 <button type="submit">Save</button>
                 <button onClick={handlePrintQuote} type="button">Preview Quote</button>
-                <button onClick={handleEmail}>Email</button>
-                <button>Create Sales Order</button>
+                <button onClick={handleEmail} type="button">Email</button>
+                <button type="button">Create Sales Order</button>
                 <button type="reset">Clear</button>
               </div>
             </div>
