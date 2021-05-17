@@ -28,7 +28,7 @@ const handleEmail = async () => {
   try{
     const res = await axios.post('/api/jobOrder/email/sendEmail')
     if(res.status === 200){
-      alert(`Quote Sent`)
+      alert(`Email Sent`)
     }
 
   }catch(err){
@@ -68,7 +68,7 @@ const jobOrder = () => {
             // alert(JSON.stringify(values, null, 2))
             const res = await axios.post('/api/jobOrder/jobOrder', { values, itemRowArray, currentLongDate })
             if(res.status === 200){
-              // alert("Saved")
+              alert("Saved")
             }
           }catch(err){
             alert(err)
