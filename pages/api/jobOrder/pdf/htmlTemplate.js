@@ -58,7 +58,6 @@ const htmlTemplate = `
             </div>
               <div>
               <h3>Vendor</h3>
-              <h4>${values.repName}</h4>
               <p>${values.vendor}</p>
               <p>${values.vendorAddress}</p>
               <p>${values.vendorEmail}</p>

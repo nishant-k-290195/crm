@@ -24,14 +24,27 @@ const handlePrintQuote = async () => {
   }
 }
 
+const handleEmail = async () => {
+  try{
+    const res = await axios.post('/api/salesOrder/email/sendEmail')
+    if(res.status === 200){
+      alert(`Quote Sent`)
+    }
+
+  }catch(err){
+    alert(err)
+  }
+}
+
 const salesOrders = () => {
   const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
   return (
     <>
       <Formik
         initialValues={{
-          quoteNumber: '',
+          salesOrderNumber: '',
           fullName: '',
+          email:'',
           cName: '',
           streetAddress:'',
           city: '',
@@ -73,6 +86,12 @@ const salesOrders = () => {
                     autoComplete="off"
                   />
                   <MyTextInput
+                    label="Email"
+                    name="email"
+                    type="text"
+                      autoComplete="off"
+                  />
+                  <MyTextInput
                     label="Company"
                     name="cName"
                     type="text"
@@ -83,7 +102,7 @@ const salesOrders = () => {
                 <div className={quoteStyles.right}>
                   <MyTextInput
                     label="Sales Order # "
-                    name="quoteNumber"
+                    name="salesOrderNumber"
                     type="text"
                     autoComplete="off"
                   />
@@ -170,8 +189,8 @@ const salesOrders = () => {
               </div>
               <div className={quoteStyles.section7}>
                 <button type="submit">Save</button>
-                <button>Email</button>
                 <button onClick={handlePrintQuote} type="button">Preview Sales Order</button>
+                <button onClick={handleEmail}>Email</button>
                 <button>Create Job Order</button>
                 <button type="reset">Clear</button>
               </div>

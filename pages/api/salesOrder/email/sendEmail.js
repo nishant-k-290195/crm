@@ -25,11 +25,11 @@ export default async function sendEmailHandler (req, res){
         const info = await transporter.sendMail({
           from: `Rent A Porta<${process.env.EMAIL_ID}>`, // sender address
           to: `${values.email}`, // list of receivers
-          subject: "Rent A Porta: Quote", // Subject line
+          subject: "Rent A Porta: Sales_Order Confirmation", // Subject line
           attachments: [{
-            filename: 'quote.pdf',
+            filename: 'sales_Order.pdf',
             content: emailBodyTemplate,
-            path: './public/temp/quote.pdf',
+            path: './public/temp/salesOrder.pdf',
           }],
           text: emailBodyTemplate, // plain text body 
           // html: `<p>This is quote email</p>`// html body

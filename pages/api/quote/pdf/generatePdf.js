@@ -10,12 +10,10 @@ const generatePdf = async () => {
         format: 'A4',
         printBackground: true,
       }
-
       await page.goto('http://localhost:3000/quote', {waitUntil: 'networkidle2'})
       await page.setContent(htmlTemplate)
       await page.pdf(options)
       await browser.close()
-
     }catch(e){
       console.log(e)
     }

@@ -1,18 +1,19 @@
+const { values } = global.quoteData
 const emailBodyTemplate = 
-` Hi Cx,
+`Hi ${values.fullName},
 
-  Thank you for showing interest in Rent A Porta, a portable restroom company for assisting your needs.
+Thank you for your interest in Rent A Porta, a portable equipment rental company.
   
-  Please find attached the Quote# 2546 as per your request.
+Please find attached the Quote # ${values.quoteNumber} that you requested.
   
-  You can respond back to this email or call us @ (855) 780-3061 for placing the order or if you have any additional questions.
+For placing the order, you can respond back to this email or call us at: (855) 780-3061.
   
-  I await your immediate response.
+A prompt response will be extremely appreciated.
   
-  Thanks & Regards,
-  Daniel Martinez | Rent A Porta
-  Toll-free: (855) 780-3061 | support@rentaporta.com
-  https://www.rentaporta.com
-`
+Thanks & Regards,
+Daniel Martinez | Rent A Porta
+Toll-free: (855) 780-3061
+support@rentaporta.com
+https://www.rentaporta.com`
 
 export default emailBodyTemplate

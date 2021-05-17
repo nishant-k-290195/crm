@@ -42,6 +42,7 @@ const quotes = () => {
         initialValues={{
           quoteNumber: '',
           fullName: '',
+          email:'',
           cName: '',
           streetAddress:'',
           city: '',
@@ -80,6 +81,12 @@ const quotes = () => {
                     type="text"
                     autoComplete="off"
                   />
+                  <MyTextInput
+                    label="Email"
+                    name="email"
+                    type="text"
+                    autoComplete="off"
+                  />                 
                   <MyTextInput
                     label="Company"
                     name="cName"
@@ -144,12 +151,6 @@ const quotes = () => {
                     label="Pickup Date"
                     autoComplete="off"
                   />
-                  {/* <MyTextArea
-                    label="Customer Instructions"
-                    name="instructions"
-                    type="text"
-                    autoComplete="off"
-                  /> */}
                 </div>
               </div>
               <div className={quoteStyles.section5}>

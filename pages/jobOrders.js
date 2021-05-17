@@ -24,6 +24,18 @@ const handlePrintjobOrder = async () => {
   }
 }
 
+const handleEmail = async () => {
+  try{
+    const res = await axios.post('/api/jobOrder/email/sendEmail')
+    if(res.status === 200){
+      alert(`Quote Sent`)
+    }
+
+  }catch(err){
+    alert(err)
+  }
+}
+
 const jobOrder = () => {
   const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
   return (
@@ -206,7 +218,7 @@ const jobOrder = () => {
               <div className={jobOrderStyles.section7}>
                 <button type="submit">Save</button>
                 <button onClick={handlePrintjobOrder} type="button">Preview Job Order</button>
-                <button>Email</button>
+                <button onClick={handleEmail}>Email</button>
                 <button type="reset">Clear</button>
               </div>
             </div>

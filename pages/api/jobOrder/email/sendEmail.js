@@ -16,20 +16,20 @@ export default async function sendEmailHandler (req, res){
           port: 465,
           secure: true, // true for 465, false for other ports
           auth: {
-          user: process.env.EMAIL_ID, // generated ethereal user
-          pass: process.env.EMAIL_PASS, // generated ethereal password
+          user: process.env.DANIEL_EMAIL_ID, // generated ethereal user
+          pass: process.env.DANIEL_EMAIL_PASS, // generated ethereal password
           },
           tls:{rejectUnauthorized: false}
         });
         
         const info = await transporter.sendMail({
-          from: `Rent A Porta<${process.env.EMAIL_ID}>`, // sender address
-          to: `${values.email}`, // list of receivers
-          subject: "Rent A Porta: Quote", // Subject line
+          from: `Daniel Martinez<${process.env.DANIEL_EMAIL_ID}>`, // sender address
+          to: `${values.vendorEmail}`, // list of receivers
+          subject: "Quengenesis LLC: Job_Order Confirmation", // Subject line
           attachments: [{
-            filename: 'quote.pdf',
+            filename: 'Job_Order.pdf',
             content: emailBodyTemplate,
-            path: './public/temp/quote.pdf',
+            path: './public/temp/jobOrder.pdf',
           }],
           text: emailBodyTemplate, // plain text body 
           // html: `<p>This is quote email</p>`// html body
