@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer')
 
 const pdf = async () => {
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions']});
     const page = await browser.newPage()
     const options = {
       path:'./public/temp/jobOrder.pdf',
