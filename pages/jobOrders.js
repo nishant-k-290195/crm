@@ -14,7 +14,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const handlePrintJobOrder = async () => {
   try{
-    const res = await axios.post('/api/jobOrder/pdf/generatePdf')
+    const res = await axios.get('/api/jobOrder/pdf/generatePdf')
     if(res.status === 200){
       window.open("/temp/jobOrder.pdf")
     }
@@ -26,7 +26,7 @@ const handlePrintJobOrder = async () => {
 
 const handleEmail = async () => {
   try{
-    const res = await axios.post('/api/jobOrder/email/sendEmail')
+    const res = await axios.get('/api/jobOrder/email/sendEmail')
     if(res.status === 200){
       alert(`Email Sent`)
     }

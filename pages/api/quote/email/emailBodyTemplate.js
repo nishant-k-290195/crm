@@ -1,6 +1,5 @@
-const { values } = global.quoteData
-const emailBodyTemplate = 
-`Hi ${values.fullName},
+const emailBodyTemplate = (values) => {
+return `Hi ${values.fullName},
 
 Thank you for your interest in Rent A Porta, a portable equipment rental company.
   
@@ -15,5 +14,6 @@ Daniel Martinez | Rent A Porta
 Toll-free: (855) 780-3061
 support@rentaporta.com
 https://www.rentaporta.com`
+}
 
 export default emailBodyTemplate

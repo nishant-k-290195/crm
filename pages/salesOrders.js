@@ -25,7 +25,7 @@ const handlePrintSalesOrder = async () => {
 
 const handleEmail = async () => {
   try{
-    const res = await axios.post('/api/salesOrder/email/sendEmail')
+    const res = await axios.get('/api/salesOrder/email/sendEmail')
     if(res.status === 200){
       alert(`Email Sent`)
     }

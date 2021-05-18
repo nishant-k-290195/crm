@@ -25,7 +25,7 @@ const handlePrintQuote = async () => {
 }
 const handleEmail = async () => {
   try{
-    const res = await axios.post('/api/quote/email/sendEmail')
+    const res = await axios.get('/api/quote/email/sendEmail')
     if(res.status === 200){
       alert(`Email Sent`)
     }

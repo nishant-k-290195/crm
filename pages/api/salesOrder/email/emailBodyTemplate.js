@@ -1,6 +1,5 @@
-const { values } = global.quoteData
-const emailBodyTemplate = 
-`Hi ${values.fullName},
+const emailBodyTemplate = (values) => {
+return `Hi ${values.fullName},
 
 As per our conversation, we have created a Sales_Order # ${values.salesOrderNumber}.
 
@@ -13,5 +12,8 @@ Daniel Martinez | Rent A Porta
 Toll-free: (855) 780-3061
 support@rentaporta.com
 https://www.rentaporta.com`
+
+}
+
 
 export default emailBodyTemplate
