@@ -15,8 +15,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const handlePrintQuote = async () => {
   try{
     const res = await axios.post('/api/quote/pdf/generatePdf')
-    if(res.status === 200){
-      window.open("/temp/quote.pdf")
+    if(res.status===200){
+      window.open(`/temp/quote.pdf`)
     }
 
   }catch(err){
@@ -59,7 +59,7 @@ const quotes = () => {
             await sleep(500);
             const res = await axios.post('/api/quote/quote', { values, itemRowArray, currentLongDate })
             if(res.status === 200){
-              alert('success')
+              alert('Saved')
             }
           }catch(err){
             alert(err)

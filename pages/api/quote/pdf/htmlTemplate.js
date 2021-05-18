@@ -1,6 +1,6 @@
 import cssTemplate from './cssTemplate'
-
-const { itemRowArray, values, currentLongDate } = global.quoteData
+import {quoteData} from '../quote'
+const { itemRowArray, values, currentLongDate } = quoteData
 const {day, month, date, year} = currentLongDate
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

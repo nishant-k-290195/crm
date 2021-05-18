@@ -98,7 +98,6 @@ const salesOrders = () => {
                     autoComplete="off"
                   />
                 </div>
-
                 <div className={quoteStyles.right}>
                   <MyTextInput
                     label="Sales Order # "

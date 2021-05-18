@@ -1,3 +1,4 @@
+import {server} from '../../../../config'
 import htmlTemplate from '../pdf/htmlTemplate'
 const puppeteer = require('puppeteer')
 
@@ -11,7 +12,7 @@ const pdf = async () => {
       printBackground: true,
     }
 
-    await page.goto('http://localhost:3000/salesOrder', {waitUntil: 'networkidle2'})
+    await page.goto(`${server}/salesOrders`, {waitUntil: 'networkidle2'})
     await page.setContent(htmlTemplate)
     await page.pdf(options)
     await browser.close()
