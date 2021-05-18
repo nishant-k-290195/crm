@@ -14,11 +14,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const handlePrintSalesOrder = async () => {
   try{
-    const res = await axios.post('/api/salesOrder/pdf/generatePdf')
+    const res = await axios.get('/api/salesOrder/pdf/generatePdf')
     if(res.status === 200){
       window.open("/temp/salesOrder.pdf")
     }
-
   }catch(err){
     alert(err)
   }

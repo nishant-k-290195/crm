@@ -14,7 +14,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const handlePrintQuote = async () => {
   try{
-    const res = await axios.post('/api/quote/pdf/generatePdf')
+    const res = await axios.get('/api/quote/pdf/generatePdf')
     if(res.status===200){
       window.open(`/temp/quote.pdf`)
     }

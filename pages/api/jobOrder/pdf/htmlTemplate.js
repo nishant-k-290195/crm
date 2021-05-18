@@ -1,46 +1,47 @@
 import cssTemplate from './cssTemplate'
 
-const { itemRowArray, values, currentLongDate } = global.quoteData
-const {day, month, date, year} = currentLongDate
+const itemRows = (itemRowArray) => {
+  itemRowArray.map((element, {index} )=> {
+    const {item, desc, qty, rate} = element
+    const total = qty*rate
+    return (
+      `<ul key=${index} id=${index} class='items-list'>
+        <li>
+          <p>${item}</p>
+        </li>
+        <li>
+          <p>${desc}</p>
+        </li>
+        <li>
+          <p>${qty}</p>
+        </li>
+        <li>
+          <p>$${rate}</p>
+        </li>
+        <li>
+          <p>$${total}</p>
+        </li>
+      </ul>`
+    )
+  }).join('')
+}
 
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-const deliveryDate = new Date(`${values.deliveryDate}`)
-const longDeliveryDate = `${days[deliveryDate.getDay()]} ${months[deliveryDate.getMonth()]} ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`
-const pickupDate = new Date(`${values.pickupDate}`)
-const longPickupDate = `${days[pickupDate.getDay()]} ${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
+const totalAmount = (itemRowArray) => {
+  itemRowArray.reduce((accumulator, currentValue) => {
+    return accumulator + (currentValue.qty * currentValue.rate)
+  }, 0)
+}
 
-const totalAmount = itemRowArray.reduce((accumulator, currentValue) => {
-  return accumulator + (currentValue.qty * currentValue.rate)
-}, 0)
+const htmlTemplate = ({ itemRowArray, values, currentLongDate } ) => {
 
-const itemRows = itemRowArray.map((element, {index} )=> {
-  const {item, desc, qty, rate} = element
-  const total = qty*rate
-  return (
-    
-    `<ul key=${index} id=${index} class='items-list'>
-      <li>
-        <p>${item}</p>
-      </li>
-      <li>
-        <p>${desc}</p>
-      </li>
-      <li>
-        <p>${qty}</p>
-      </li>
-      <li>
-        <p>$${rate}</p>
-      </li>
-      <li>
-        <p>$${total}</p>
-      </li>
-    </ul>`
-  )
-}).join('')
-
-const htmlTemplate = `
-  <html>
+  const {day, month, date, year} = currentLongDate
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  const deliveryDate = new Date(`${values.deliveryDate}`)
+  const longDeliveryDate = `${days[deliveryDate.getDay()]} ${months[deliveryDate.getMonth()]} ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`
+  const pickupDate = new Date(`${values.pickupDate}`)
+  const longPickupDate = `${days[pickupDate.getDay()]} ${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
+  return `<html>
     <head>
       <style>
         ${cssTemplate}
@@ -119,9 +120,9 @@ const htmlTemplate = `
             <h3>TOTAL</h3>
           </li>
         </ul>
-          ${itemRows}
+          ${itemRows(itemRowArray)}
         <div>
-          <h4>Total Amount $${totalAmount}</h4>
+          <h4>Total Amount $${totalAmount(itemRowArray)}</h4>
         </div>
       </div>
       <hr/>
@@ -157,5 +158,6 @@ const htmlTemplate = `
     </body>
   </html>
 `
+}
 
 export default htmlTemplate
