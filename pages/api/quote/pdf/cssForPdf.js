@@ -41,6 +41,10 @@ const cssTemplate =
     row-gap: 1rem;
   }
 
+  .section-1-right h1{
+    font-size: x-large;
+  }
+  
   .section-2{
     display: grid;
     justify-content: space-between;
@@ -80,8 +84,8 @@ const cssTemplate =
 
   .section-3 p{
     font-size: small;
-    padding-top: .3rem;
-    padding-bottom: .3rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
     padding-left: .5rem;
   }
 
