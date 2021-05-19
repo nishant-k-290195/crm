@@ -1,7 +1,7 @@
 import cssTemplate from './cssForPdf'
 
 const itemRows = (itemRowArray) => {
-  itemRowArray.map((element, {index} )=> {
+  return itemRowArray.map((element, {index} )=> {
     const {item, desc, qty, rate} = element
     const total = qty*rate
     return (
@@ -27,7 +27,7 @@ const itemRows = (itemRowArray) => {
 }
 
 const totalAmount = (itemRowArray) => {
-  itemRowArray.reduce((accumulator, currentValue) => {
+  return itemRowArray.reduce((accumulator, currentValue) => {
     return accumulator + (currentValue.qty * currentValue.rate)
   }, 0)
 }
@@ -59,7 +59,7 @@ const htmlTemplate = ({ itemRowArray, values, currentLongDate } ) => {
             </div>
               <div>
               <h3>Vendor</h3>
-              <p>${values.vendor}</p>
+              <h4>${values.vendor}</h4>
               <p>${values.vendorAddress}</p>
               <p>${values.vendorEmail}</p>
               <p>${values.vendorPhone}</p>
@@ -68,7 +68,7 @@ const htmlTemplate = ({ itemRowArray, values, currentLongDate } ) => {
           </div>
 
           <div class="section-1-right">
-            <h1>Job Order # ${values.quoteNumber}</h1>
+            <h1>Job Order # ${values.jobOrderNumber}</h1>
             <h3>${day} ${month} ${date}, ${year}</h3>
           </div>
         </div>
