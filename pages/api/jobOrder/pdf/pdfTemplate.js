@@ -1,4 +1,4 @@
-import cssTemplate from './cssTemplate'
+import cssTemplate from './cssForPdf'
 
 const itemRows = (itemRowArray) => {
   itemRowArray.map((element, {index} )=> {

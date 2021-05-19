@@ -1,4 +1,4 @@
-import cssTemplate from './cssTemplate'
+import cssTemplate from './cssForPdf'
 
 const itemRows = (itemRowArray) => {
   return (
@@ -35,7 +35,6 @@ const totalAmount = (itemRowArray) => {
 }
 
 const htmlTemplate = ({ itemRowArray, values, currentLongDate } ) => 
-
 {
   const {day, month, date, year} = currentLongDate
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

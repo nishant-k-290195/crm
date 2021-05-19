@@ -5,38 +5,36 @@ import MyTextInput from  '../FormControls/MyTextInput'
 import MyMaskedTextInput from  '../FormControls/MyMaskedTextInput'
 import MyDateInput from  '../FormControls/MyDateInput'
 import MyTextArea from  '../FormControls/MyTextArea'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import {ItemsContext} from '../contexts/ItemsListArrayContext'
 import ItemsList from '../components/ItemsList'
 import CurrentDate, {currentLongDate} from '../components/CurrentDate'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-const handlePrintSalesOrder = async () => {
-  try{
-    const res = await axios.get('/api/salesOrder/pdf/generatePdf')
-    if(res.status === 200){
-      window.open("/temp/salesOrder.pdf")
-    }
-  }catch(err){
-    alert(err)
-  }
-}
-
-const handleEmail = async () => {
-  try{
-    const res = await axios.get('/api/salesOrder/email/sendEmail')
-    if(res.status === 200){
-      alert(`Email Sent`)
-    }
-
-  }catch(err){
-    alert(err)
-  }
-}
-
 const salesOrders = () => {
-  const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
+  const [itemRowArray] = useContext(ItemsContext)
+  const [submitValues, setSubmitValues] = useState("")
+  const handlePrintSalesOrder = async () => {
+    try{
+        window.open("/temp/salesOrder.pdf")
+    }catch(err){
+      alert(err)
+    }
+  }
+  
+  const handleEmail = async () => {
+    try{
+      const res = await axios.post('/api/salesOrder/email/sendEmail', submitValues)
+      if(res.status === 200){
+        alert(`Email Sent`)
+      }
+  
+    }catch(err){
+      alert(err)
+    }
+  }
+  
   return (
     <>
       <Formik
@@ -60,7 +58,7 @@ const salesOrders = () => {
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
           try{
             await sleep(500);
-            // alert(JSON.stringify(values, null, 2))
+            setSubmitValues(values)
             const res = await axios.post('/api/salesOrder/salesOrder', { values, itemRowArray, currentLongDate })
             if(res.status === 200){
               alert("Saved")

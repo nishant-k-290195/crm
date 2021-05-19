@@ -5,37 +5,33 @@ import MyTextInput from  '../FormControls/MyTextInput'
 import MyMaskedTextInput from  '../FormControls/MyMaskedTextInput'
 import MyDateInput from  '../FormControls/MyDateInput'
 import MyTextArea from  '../FormControls/MyTextArea'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import {ItemsContext} from '../contexts/ItemsListArrayContext'
 import ItemsList from '../components/ItemsList'
 import CurrentDate, {currentLongDate} from '../components/CurrentDate'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-const handlePrintQuote = async () => {
-  try{
-    const res = await axios.get('/api/quote/pdf/generatePdf')
-    if(res.status===200){
-      window.open(`/temp/quote.pdf`)
-    }
-
-  }catch(err){
-    alert(err)
-  }
-}
-const handleEmail = async () => {
-  try{
-    const res = await axios.get('/api/quote/email/sendEmail')
-    if(res.status === 200){
-      alert(`Email Sent`)
-    }
-
-  }catch(err){
-    alert(err)
-  }
-}
 const quotes = () => {
-  const [itemRowArray, setItemRowArray] = useContext(ItemsContext)
+  const [itemRowArray] = useContext(ItemsContext)
+  const [submitValues, setSubmitValues] = useState("")
+  const handlePrintQuote = async () => {
+    try{
+      window.open(`/temp/quote.pdf`)
+    }catch(err){
+      alert(err)
+    }
+  }
+  const handleEmail = async () => {
+    try{
+      const res = await axios.post('/api/quote/email/sendEmail', submitValues)
+      if(res.status === 200){
+        alert(`Email Sent`)
+      }
+    }catch(err){
+      alert(err)
+    }
+  }
   return (
     <>
       <Formik
@@ -57,6 +53,7 @@ const quotes = () => {
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
           try{
             await sleep(500);
+            setSubmitValues(values)
             const res = await axios.post('/api/quote/quote', { values, itemRowArray, currentLongDate })
             if(res.status === 200){
               alert('Saved')
