@@ -25,12 +25,10 @@ const cssTemplate =
 
     h3{
       font-size: medium;
-      font-weight: 500;
     }
 
     p{
       font-size: medium;
-      font-weight: 300;
     }
 
     .section-1{
@@ -52,7 +50,6 @@ const cssTemplate =
     }
     .section-1-right h1{
       font-size: x-large;
-      font-weight: 900;
     }
 
     .section-2{
@@ -80,14 +77,12 @@ const cssTemplate =
     }
 
     .section-3 h3{
-      font-weight: 400;
       font-size: small;
       padding: .5rem;
     }
 
     .section-3 p{
       font-size: small;
-      font-weight: 400;
       padding-top: .2rem;
       padding-bottom: .2rem;
       padding-left:.5rem;
@@ -107,12 +102,11 @@ const cssTemplate =
 
     .section-3 div h4{
       font-size: medium;
-      font-weight: 500;
+      color: #EF648A;
     }
 
     .section-3 div p{
       font-size: medium;
-      font-weight: 400;
     }
 
     .items-heading{
@@ -143,7 +137,8 @@ const cssTemplate =
 
     .items-list li{
       background-color: #F3F3F3;
-      border: solid 1px white
+      border: solid 1px white;
+      height: 100%;
     }
 
     .section-4{
@@ -164,7 +159,6 @@ const cssTemplate =
     }
     .cancellation p{
       font-size: smaller;
-      font-weight: 300;
       padding: 2rem 0;
     }
 
@@ -179,7 +173,6 @@ const cssTemplate =
       grid-template-columns: repeat(3, max-content);
       color: blue;
       font-size: smaller;
-      font-weight: 300;
     }
   `
 
