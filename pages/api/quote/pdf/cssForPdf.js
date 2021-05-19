@@ -22,6 +22,14 @@ const cssTemplate =
     margin: 0;
     padding: 0;
   }
+  
+  h3{
+    font-size: medium;
+  }
+
+  p{
+    font-size: medium;
+  }
 
 
   .section-1{
