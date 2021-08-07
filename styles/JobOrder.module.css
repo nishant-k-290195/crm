@@ -14,7 +14,8 @@
 .section1, .section2, .section3, .section4, .sectionI, .section5, .section6, .section7{
   margin: 1rem 0;
   padding: 1rem;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 113, 128);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .left{
@@ -120,4 +121,43 @@
   background-size: 1rem;
   padding-left: 1rem;
   background-repeat: no-repeat;
+}
+.section7 button {
+  height: 2.5rem;
+  width: 10rem;
+	color: black;
+	transition: all 0.5s;
+	position: relative;
+}
+.section7 button::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(255,255,255,0.1);
+	transition: all 0.3s;
+}
+.section7 button:hover::before {
+	opacity: 0 ;
+	transform: scale(0.5,0.5);
+}
+.section7 button::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border: 1px solid rgba(255,255,255,0.5);
+	transform: scale(1.2,1.2);
+}
+.section7 button:hover::after {
+	opacity: 1;
+	transform: scale(1,1);
 }

@@ -5,7 +5,9 @@ const Nav = () => {
   return (
     <div className={navStyles.section}>
       <div className={navStyles.container}>
+        
         <nav className={navStyles.nav}>
+        <img src="static/icon-512x512.png" alt="https://rentaporta.com" />
           <ul className={navStyles.ul}>
             <li>
               <Link href='/leads'>Leads Center</Link>

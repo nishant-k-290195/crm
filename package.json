@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@okta/okta-auth-js": "^5.0.1",
+    "@okta/okta-react": "^5.1.2",
     "@react-pdf/renderer": "^2.0.12",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
@@ -16,6 +18,7 @@
     "nodemailer": "^6.6.0",
     "puppeteer": "^9.1.1",
     "react": "17.0.2",
+    "react-admin": "^3.15.1",
     "react-calendar": "^3.4.0",
     "react-datepicker": "^3.8.0",
     "react-dom": "^17.0.2",
