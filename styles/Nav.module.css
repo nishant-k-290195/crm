@@ -2,8 +2,8 @@
   padding: 0;
   margin: 0;
   width: 16%;
-  height: 150vh;
-  position: absolute;
+  height: 150%;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: #8BC6EC;
